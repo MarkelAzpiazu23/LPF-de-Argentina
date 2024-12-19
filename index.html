@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipos de Fútbol Argentinos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <h1>Lista de Equipos</h1>
+    <ul>
+      <li v-for="equipo in paginatedEquipos" :key="equipo.id">
+        <img :src="equipo.imagen" :alt="equipo.nombre" width="100" height="100" />
+        <div>
+          <strong>{{ equipo.nombre }}</strong> (Fundado en {{ equipo.fundacion }})
+          <br>
+          {{ equipo.ubicacion }}, {{ equipo.estadio }}
+        </div>
+      </li>
+    </ul>
+    <div class="pagination">
+      <button @click="prevPage" :disabled="currentPage === 1">Anterior</button>
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+      <button @click="nextPage" :disabled="currentPage === totalPages">Siguiente</button>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
